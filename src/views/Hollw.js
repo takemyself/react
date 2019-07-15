@@ -1,6 +1,6 @@
 import React from 'react'
-<<<<<<< HEAD
 import Text from './Test'
+import {arrayUnion, arrayIntersection, arrayDifference} from '../utils/arrayOperation'
 
 class Hellw extends React.Component{
     constructor() {
@@ -13,8 +13,16 @@ class Hellw extends React.Component{
         }
     }
     componentDidMount(){
-
+        let arr1 = [{name:'name1',id:6},{name:'name2',id:2},{name:'name3',id:3}];
+        let arr2 = [{name:'name1',id:6},{name:'name4',id:4},{name:'name5',id:5}];
+        // let arr1 = [1,2,5,3]
+        // let arr2 = [4,3]
+        console.log(arrayUnion(arr1,arr2));
+        console.log(arrayIntersection(arr1,arr2,true,'id'));
+        console.log(arrayDifference())
     }
+
+
     shouldComponentUpdate(nextProps, nextState) {
         if(JSON.stringify(nextState) === JSON.stringify(this.state)) {
             return false
@@ -32,8 +40,6 @@ class Hellw extends React.Component{
     }
     render() {
         let {aa} = this.state, {name} = this.name
-        console.log(aa)
-        console.log(name)
         return (
             <div>
                 <div onClick={() => {this.test()}}>hellw  {aa} {name}</div>
@@ -44,10 +50,3 @@ class Hellw extends React.Component{
 }
 
 export default Hellw
-=======
-class Test export React.Component {
-    render(){
-        return ()
-    }
-}
->>>>>>> 83f10489e021744fd8399a5f4d00ee5ebadc0661

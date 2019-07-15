@@ -10,6 +10,6 @@ class Test extends React.Component{
             <div onClick={()=> this.props.onClicked({aa: 11})} >test {data}</div>
         )
     }
-}s
+}
 
 export default Test
