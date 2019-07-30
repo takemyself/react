@@ -4,10 +4,14 @@ class Test extends React.Component{
     propsEdit(data) {
         data = 1
     }
+
+    componentDidMount() {
+        // console.log(1111)
+    }
+
     render() {
-        let {data} = this.props
         return(
-            <div onClick={()=> this.props.onClicked({aa: 11})} >test {data}</div>
+            <div>test11</div>
         )
     }
 }

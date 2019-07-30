@@ -1,27 +1,42 @@
-import React from 'react'
-import Text from './Test'
-import {arrayUnion, arrayIntersection, arrayDifference} from '../utils/arrayOperation'
+import React from 'react';
+import LazyLoad from 'react-lazyload';
+import imgs from '../imgs/load.jpeg'
+import LazyImage from './LazyImage'
 
 class Hellw extends React.Component{
     constructor() {
         super()
         this.state = {
-            aa: 1
+            aa: 1,
+            arr: [
+                {a: 1},
+                {a: 1},
+                {a: 1}
+            ]
         }
         this.name = {
             name: 222
         }
     }
-    componentDidMount(){
-        let arr1 = [{name:'name1',id:6},{name:'name2',id:2},{name:'name3',id:3}];
-        let arr2 = [{name:'name1',id:6},{name:'name4',id:4},{name:'name5',id:5}];
-        // let arr1 = [1,2,5,3]
-        // let arr2 = [4,3]
-        console.log(arrayUnion(arr1,arr2));
-        console.log(arrayIntersection(arr1,arr2,true,'id'));
-        console.log(arrayDifference())
+
+    scrollHandler = this.handleScroll.bind(this);
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.scrollHandler);
     }
 
+    _handleScroll(scrollTop) {
+        console.log(scrollTop)
+        //滚动条距离页面的高度
+    }
+    handleScroll(event) {
+        let scrollTop = event.srcElement.body.scrollTop;
+        let scrollY = event.path[1].scrollY // 滚动条滚动距离
+        let scrollH = event.srcElement.body.scrollHeight //滚动条高度
+        let windowH = event.path[1].innerHeight // 窗口高度
+        console.log(scrollH - windowH, scrollY)
+        // this._handleScroll(scrollTop);
+    }
 
     shouldComponentUpdate(nextProps, nextState) {
         if(JSON.stringify(nextState) === JSON.stringify(this.state)) {
@@ -31,19 +46,45 @@ class Hellw extends React.Component{
         }
     }
     test() {
-        this.setState({
-            aa: 22
-        })
+        let data= 'Hello world!';
+        let blob = new Blob([data], {
+            type: 'text/html,charset=UTF-8'
+        });
+        window.URL = window.URL || window.webkitURL;
+        let a = document.createElement('a')
+        a.download = 'data.txt'
+        a.href = URL.createObjectURL(blob);
+        a.click()
     }
     fatherEdit(stateAa) {
         this.setState(stateAa)
     }
+    loadimg() {
+        alert(1)
+    }
+
+
+
+
     render() {
-        let {aa} = this.state, {name} = this.name
         return (
             <div>
-                <div onClick={() => {this.test()}}>hellw  {aa} {name}</div>
-                <Text onClicked={this.fatherEdit.bind(this)} data={aa}></Text>
+                <div style={{height: '800px',background: 'green'}}></div>
+                <LazyLoad height={400} offset={100} scroll>
+                    <div>
+                        <img src={imgs} height={400} onClick={()=>{this.loadimg()}} />
+                    </div>
+                </LazyLoad>
+                <div>3333</div>
+                <div>
+                    <LazyImage
+                        srcset={imgs}
+                        src='https://placehold.it/200x300?text=Image2'
+                        alt="200x300"
+                        width="200"
+                        height="300"
+                    />
+                </div>
             </div>
         )
     }
