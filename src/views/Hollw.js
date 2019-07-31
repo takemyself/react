@@ -34,7 +34,7 @@ class Hellw extends React.Component{
         let scrollY = event.path[1].scrollY // 滚动条滚动距离
         let scrollH = event.srcElement.body.scrollHeight //滚动条高度
         let windowH = event.path[1].innerHeight // 窗口高度
-        console.log(scrollH - windowH, scrollY)
+        console.log(scrollH - windowH, scrollY, scrollTop)
         // this._handleScroll(scrollTop);
     }
 
@@ -70,9 +70,9 @@ class Hellw extends React.Component{
         return (
             <div>
                 <div style={{height: '800px',background: 'green'}}></div>
-                <LazyLoad height={400} offset={100} scroll>
+                <LazyLoad height={400} offset={100}>
                     <div>
-                        <img src={imgs} height={400} onClick={()=>{this.loadimg()}} />
+                        <img src={imgs} height={400} onClick={()=>{this.loadimg()}} alt="" />
                     </div>
                 </LazyLoad>
                 <div>3333</div>

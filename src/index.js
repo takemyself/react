@@ -1,20 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, Link, browserHistory} from 'react-router';
+import { Router, Route, browserHistory} from 'react-router';
 // , Link, IndexRoute, Redirect
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import Hellw from './views/Hollw'
-class Test extends React.Component {
-    render() {
-        return(
-            <div>
-                <Link to="/h">to hollw</Link>
-            </div>
-        )
-    }
-}
+import Hellw from './views/Hollw';
+import Test from './views/Test';
 
 ReactDOM.render((
     <Router history={browserHistory}>
