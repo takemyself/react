@@ -44,6 +44,7 @@ class Paginations extends React.Component{
                 defaultCurrent={1}
                 defaultPageSize={pageSize}
                 total={500}
+                showTotal={total => `Total ${total} items`}
                 onChange={(pageNumber)=>{this.onChange(pageNumber)}}
             />
         )

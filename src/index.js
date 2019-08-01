@@ -7,12 +7,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Hellw from './views/Hollw';
 import Test from './views/Test';
+import CTable from './views/CTable';
 
 ReactDOM.render((
     <Router history={browserHistory}>
         <Route path="/" component={App}></Route>
         <Route path="/t" component={Test}></Route>
         <Route path="/h" component={Hellw}></Route>
+        <Route path="/ta" component={CTable}></Route>
     </Router>
 ), document.getElementById('root'));
 
