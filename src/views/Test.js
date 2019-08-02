@@ -10,6 +10,7 @@ class Test extends React.Component{
         this.state = {
             loading: true
         }
+        this.pw = React.createRef();
     }
 
 
@@ -26,6 +27,9 @@ class Test extends React.Component{
             },1000)
         })
     }
+    getRef() {
+        console.log(this.pw.current.refTest())
+    }
 
     componentDidMount() {
         // console.log(1111)
@@ -36,8 +40,8 @@ class Test extends React.Component{
         return(
             <Spin spinning={loading}>
                 <div>
-                    <div>test</div>
-                    <Paginations onPaginations={this.onPaginations} />
+                    <div onClick={()=>{this.getRef()}}>test</div>
+                    <Paginations onPaginations={this.onPaginations} ref={this.pw} />
                 </div>
             </Spin>
         )

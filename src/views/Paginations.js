@@ -14,6 +14,10 @@ class Paginations extends React.Component{
         }
     }
 
+    refTest() {
+        return 1
+    }
+
     onChange(pageNumber) {
         this.setState({pageNumber},()=>{
             this.props.onPaginations(this.state)
