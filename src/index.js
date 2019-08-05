@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import Hellw from './views/Hollw';
 import Test from './views/Test';
 import CTable from './views/CTable';
+import CTableFlow from './views/CTableFlow';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -15,6 +16,7 @@ ReactDOM.render((
         <Route path="/t" component={Test}></Route>
         <Route path="/h" component={Hellw}></Route>
         <Route path="/ta" component={CTable}></Route>
+        <Route path="/f" component={CTableFlow}></Route>
     </Router>
 ), document.getElementById('root'));
 

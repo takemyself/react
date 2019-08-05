@@ -55,7 +55,7 @@ class CTable extends React.Component{
                 title: '姓名',
                 dataIndex: 'name',
                 key: 'name',
-                render: text => <a href="javascript:;">{text}</a>,
+                render: text => <span>{text}</span>,
             },
             {
                 title: '年龄',
