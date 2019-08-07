@@ -9,6 +9,7 @@ import Hellw from './views/Hollw';
 import Test from './views/Test';
 import CTable from './views/CTable';
 import CTableFlow from './views/CTableFlow';
+import Echarts from './views/Echarts';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -17,6 +18,7 @@ ReactDOM.render((
         <Route path="/h" component={Hellw}></Route>
         <Route path="/ta" component={CTable}></Route>
         <Route path="/f" component={CTableFlow}></Route>
+        <Route path="/c" component={Echarts}></Route>
     </Router>
 ), document.getElementById('root'));
 
