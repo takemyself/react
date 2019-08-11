@@ -1,5 +1,5 @@
 import React from 'react'
-import Chart from 'rc-echarts';
+// import Chart from 'rc-echarts';
 /**
  * 分页组件
  * paginationParams:{pageSize, pageNumber}
@@ -12,7 +12,8 @@ class Echarts extends React.Component{
 
     options = () => {
         //柱状图
-        option = {
+        
+        /* let option = {
             title: {
                 text: '世界人口总量',  //标题
                 subtext: '数据来自网络' //标题描述
@@ -61,7 +62,7 @@ class Echarts extends React.Component{
         };
 
         // 散点图
-        option = {
+        let option = {
             title: {
                         text: '世界人口总量',
                         subtext: '数据来自网络'
@@ -102,7 +103,7 @@ class Echarts extends React.Component{
         };
 
         // 雷达图
-        option = {
+        let option = {
             title: {
                 text: '基础雷达图'
             },
@@ -147,7 +148,7 @@ class Echarts extends React.Component{
         };
 
         //饼图
-        option = {
+        let option = {
             title : {
                 text: '某站点用户访问来源',
                 subtext: '纯属虚构',
@@ -184,7 +185,7 @@ class Echarts extends React.Component{
                     }
                 }
             ]
-        };
+        }; */
 
     }
 
@@ -197,49 +198,8 @@ class Echarts extends React.Component{
       }
 
     render() {
-        const options = {
-            title: {
-                text: '世界人口总量',
-                subtext: '数据来自网络'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'shadow'
-                }
-            },
-            legend: {
-                data: ['2011年', '2012年']
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: {
-                type: 'value',
-                boundaryGap: [0, 0.01]
-            },
-            yAxis: {
-                type: 'category',
-                data: ['巴西','印尼','美国','印度','中国','世界人口(万)']
-            },
-            series: [
-                {
-                    name: '2011年',
-                    type: 'bar',
-                    data: [18203, 23489, 29034, 104970, 131744, 630230]
-                },
-                {
-                    name: '2012年',
-                    type: 'bar',
-                    data: [19325, 23438, 31000, 121594, 134141, 681807]
-                }
-            ]
-            };
           return (
-            <Chart options={ options } onReady={this.ready} />
+            <div>1</div>
           );
     }
 }

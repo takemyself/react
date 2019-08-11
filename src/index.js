@@ -10,6 +10,7 @@ import Test from './views/Test';
 import CTable from './views/CTable';
 import CTableFlow from './views/CTableFlow';
 import Echarts from './views/Echarts';
+import CTabledouble from './views/CTabledouble';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -19,6 +20,7 @@ ReactDOM.render((
         <Route path="/ta" component={CTable}></Route>
         <Route path="/f" component={CTableFlow}></Route>
         <Route path="/c" component={Echarts}></Route>
+        <Route path="/cd" component={CTabledouble}></Route>
     </Router>
 ), document.getElementById('root'));
 
