@@ -11,6 +11,7 @@ import CTable from './views/CTable';
 import CTableFlow from './views/CTableFlow';
 import Echarts from './views/Echarts';
 import CTabledouble from './views/CTabledouble';
+import ChirldrenClick from './views/ChirldrenClick';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -21,6 +22,7 @@ ReactDOM.render((
         <Route path="/f" component={CTableFlow}></Route>
         <Route path="/c" component={Echarts}></Route>
         <Route path="/cd" component={CTabledouble}></Route>
+        <Route path="/ch" component={ChirldrenClick}></Route>
     </Router>
 ), document.getElementById('root'));
 
