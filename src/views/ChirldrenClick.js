@@ -95,7 +95,6 @@ class ChirldrenClick extends React.Component {
 
     render() {
         let {showData, showTitle} = this.state
-        let oindex  = 0
         if(!showData.length){return null}
         console.log(showData)
         return(
