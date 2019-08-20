@@ -1,64 +1,54 @@
-import React from 'react'
-import { Table } from 'antd';
-import LazyLoad from 'react-lazyload';
+import React from 'react';
+import 'react-virtualized/styles.css';
+import List from 'react-virtualized/dist/commonjs/List'
 
 class LoadlazyTable extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: ['a','b','c']
         }
     }
-    onChange(pageNumber) {
-        console.log(pageNumber)
-    }
 
-    onShowSizeChange(current, pageSize) {
-       console.log(current, pageSize)
-    }
-
-    getData() {
-        let data = []
-        for(let i = 0; i< 1500; i++){
-            data.push({
-                key: i,
-                name: '胡彦斌' + i,
-                age: i
-            })
+    componentWillMount() {
+        let list = []
+        for(let i = 0;i< 10000;i++){
+            list.push('daffssasdfffffffffffffffffffffffffffffffffff'+i)
         }
-        return data;
+        this.setState({data: list})
     }
-    componentDidMount() {
-        let data = this.getData();
-        this.setState({data})
-    }
+
+    rowRenderer = ({
+        key,         // Unique key within array of rows
+        index,       // Index of row within collection
+        isScrolling, // The List is currently being scrolled
+        isVisible,   // This row is visible within the List (eg it is not an overscanned row)
+        style        // Style object to be applied to row (to position it)
+      }) => {
+        return (
+            <div
+              key={key}
+              style={style}
+            >
+              {this.state.data[index]}
+            </div>
+          )
+      }
+
+      tests() {
+          console.log(1)
+          this.setState({})
+      }
 
     render() {
-        let {data} = this.state;
-        console.log('开始',new Date())
-        const columns = [
-            {
-                title: '姓名',
-                dataIndex: 'name',
-                key: 'name',
-                render: text => <LazyLoad height={100} offset={500}>{text}</LazyLoad>,
-            },
-            {
-                title: '年龄',
-                dataIndex: 'age',
-                key: 'age',
-                render: (text, record) => {
-                    return <LazyLoad height={100} offset={10}>{text}</LazyLoad>
-                }
-            }
-        ];
-        console.log('晕车',new Date())
         return(
-            <div>
-                <Table
-                    columns = {columns}
-                    dataSource = {data}
-                    pagination = {false}
+            <div onClick={()=>{this.tests()}}>
+                <List
+                    width={300}
+                    height={300}
+                    rowHeight={100}
+                    rowCount={this.state.data.length}
+                    rowRenderer={this.rowRenderer}
                 />
             </div>
         )
