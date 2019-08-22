@@ -1,55 +1,57 @@
 import React from 'react';
 import 'react-virtualized/styles.css';
-import List from 'react-virtualized/dist/commonjs/List'
+import { Column, Table } from 'react-virtualized';
 
 class LoadlazyTable extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            data: ['a','b','c']
+            data: []
         }
     }
 
     componentWillMount() {
         let list = []
         for(let i = 0;i< 10000;i++){
-            list.push('daffssasdfffffffffffffffffffffffffffffffffff'+i)
+            list.push(
+                {
+                    name: 'Brian Vaughn'+ i,
+                    description: 'Software engineer',
+                    children: [
+                        {
+                            name: 'Brian Vaughn'+ i + i,
+                            description: 'Software engineer',
+                            children: []
+                        }
+                    ]
+                }
+            )
         }
         this.setState({data: list})
     }
 
-    rowRenderer = ({
-        key,         // Unique key within array of rows
-        index,       // Index of row within collection
-        isScrolling, // The List is currently being scrolled
-        isVisible,   // This row is visible within the List (eg it is not an overscanned row)
-        style        // Style object to be applied to row (to position it)
-      }) => {
-        return (
-            <div
-              key={key}
-              style={style}
-            >
-              {this.state.data[index]}
-            </div>
-          )
-      }
-
-      tests() {
-          console.log(1)
-          this.setState({})
-      }
-
     render() {
         return(
-            <div onClick={()=>{this.tests()}}>
-                <List
-                    width={300}
+            <div>
+                <Table
+                    width={500}
                     height={300}
-                    rowHeight={100}
+                    headerHeight={20}
+                    rowHeight={30}
                     rowCount={this.state.data.length}
-                    rowRenderer={this.rowRenderer}
-                />
+                    rowGetter={({ index }) => this.state.data[index]}
+                >
+                    <Column
+                    label='Name'
+                    dataKey='name'
+                    width={100}
+                    />
+                    <Column
+                    width={200}
+                    label='Description'
+                    dataKey='description'
+                    />
+                </Table>
             </div>
         )
     }

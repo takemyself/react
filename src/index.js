@@ -12,6 +12,7 @@ import CTableFlow from './views/CTableFlow';
 import Echarts from './views/Echarts';
 import CTabledouble from './views/CTabledouble';
 import ChirldrenClick from './views/ChirldrenClick';
+import LoadlazyList from './views/LoadlazyList';
 import LoadlazyTable from './views/LoadlazyTable';
 
 ReactDOM.render((
@@ -24,7 +25,8 @@ ReactDOM.render((
         <Route path="/c" component={Echarts}></Route>
         <Route path="/cd" component={CTabledouble}></Route>
         <Route path="/ch" component={ChirldrenClick}></Route>
-        <Route path="/lt" component={LoadlazyTable}></Route>
+        <Route path="/llist" component={LoadlazyList}></Route>
+        <Route path="/ltable" component={LoadlazyTable}></Route>
     </Router>
 ), document.getElementById('root'));
 
