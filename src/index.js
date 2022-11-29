@@ -14,6 +14,7 @@ import CTabledouble from './views/CTabledouble';
 import ChirldrenClick from './views/ChirldrenClick';
 import LoadlazyList from './views/LoadlazyList';
 import LoadlazyTable from './views/LoadlazyTable';
+import StlShow from './views/StlShow';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -27,6 +28,7 @@ ReactDOM.render((
         <Route path="/ch" component={ChirldrenClick}></Route>
         <Route path="/llist" component={LoadlazyList}></Route>
         <Route path="/ltable" component={LoadlazyTable}></Route>
+        <Route path="/stl" component={StlShow}></Route>
     </Router>
 ), document.getElementById('root'));
 
