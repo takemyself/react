@@ -15,6 +15,8 @@ import ChirldrenClick from './views/ChirldrenClick';
 import LoadlazyList from './views/LoadlazyList';
 import LoadlazyTable from './views/LoadlazyTable';
 import StlShow from './views/StlShow';
+import ThreeShow from './views/ThreeShow';
+import Ckeditor from './views/Ckeditor';
 
 ReactDOM.render((
     <Router history={browserHistory}>
@@ -29,6 +31,8 @@ ReactDOM.render((
         <Route path="/llist" component={LoadlazyList}></Route>
         <Route path="/ltable" component={LoadlazyTable}></Route>
         <Route path="/stl" component={StlShow}></Route>
+        <Route path="/three" component={ThreeShow}></Route>
+        <Route path="/ck" component={Ckeditor}></Route>
     </Router>
 ), document.getElementById('root'));
 
