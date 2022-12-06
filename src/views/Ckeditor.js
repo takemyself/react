@@ -1,7 +1,11 @@
 import React from 'react'
 // import { Spin } from 'antd'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import {ButtonView} from '@ckeditor/ckeditor5-react'
+
+// console.log('xx', ButtonView)
 
 class Ckeditor extends React.Component{
 
@@ -14,15 +18,26 @@ class Ckeditor extends React.Component{
 
     render() {
         return(
-            <div>
+            <div style={{width: '90%'}}>
+                
                 <CKEditor
                     editor={ ClassicEditor }
-                    data="<p>Hello from CKEditor 5!</p>"
+                    data="<p foo='aaa' class='foo'>Hello from CKEditor 5!</p><div class='foo'>11</div>"
+                    config={{
+                        removePlugins: [],
+                    }}
+                    
                     onReady={ editor => {
-                        // You can store the "editor" and use when it is needed.
                         console.log( 'Editor is ready to use!', editor );
-                        console.log('xx', editor.config.get( 'image.toolbar' ))
-// -> [ 'imageStyle:block', 'imageStyle:side', '|', 'toggleImageCaption', 'imageTextAlternative' ]
+                        const data = editor.getData();
+                        console.log('xx', data );
+                        // const view = new ButtonView();
+                        // view.set( {
+                        //     label: 'A button',
+                        //     keystroke: 'Ctrl+B',
+                        //     tooltip: true,
+                        //     withText: true
+                        // } );
 
                     } }
                     onChange={ ( event, editor ) => {
