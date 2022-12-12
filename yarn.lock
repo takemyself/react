@@ -1405,6 +1405,13 @@
   dependencies:
     ckeditor5 "^35.3.2"
 
+"@ckeditor/ckeditor5-export-word@^35.3.2":
+  version "35.3.2"
+  resolved "https://registry.npmmirror.com/@ckeditor/ckeditor5-export-word/-/ckeditor5-export-word-35.3.2.tgz#9b222faced40d9b9a5cebc7525a37106d224836a"
+  integrity sha512-AATM/Tuzngn1VMlvF+Oli3gX+6H/0H3GOKn9tMfejRRRgVaLnUqYTzJfvmkERR9nRoN+Tbj8MgAzc6hckEGWFw==
+  dependencies:
+    ckeditor5 "^35.3.2"
+
 "@ckeditor/ckeditor5-heading@^35.3.2":
   version "35.3.2"
   resolved "https://registry.npmmirror.com/@ckeditor/ckeditor5-heading/-/ckeditor5-heading-35.3.2.tgz#74a7ed138babac6961812d750d8e17584a7e2fa3"
@@ -3439,6 +3446,11 @@ cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   dependencies:
     inherits "^2.0.1"
     safe-buffer "^5.0.1"
+
+ckeditor5-custom-build-leo@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/ckeditor5-custom-build-leo/-/ckeditor5-custom-build-leo-0.0.2.tgz#77c2dee08453cb35a5ad39d34de68f1b18d67612"
+  integrity sha512-8GnKS9nZ5m/6ECdANDBi0o5oVvjczbPi+w36V2fOzehhbGk/LO44Y3QlnHomihSTMSTj0UMZ8Zi7klTcK+sgVw==
 
 ckeditor5@^35.3.2:
   version "35.3.2"

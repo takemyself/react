@@ -1,30 +1,154 @@
 import React from 'react'
 // import { Spin } from 'antd'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
-// import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import ClassicEditor from 'ckeditor5-custom-build-leo';
+import { Button } from 'antd';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import {ButtonView} from '@ckeditor/ckeditor5-react'
 
 // console.log('xx', ButtonView)
 
 class Ckeditor extends React.Component{
 
-    constructor(props){
-        super(props)
-        this.state = {
-            loading: true
+    state = {
+        value: null,
+        loadSta: false,
+        content: '',
+        columns: [
+            {
+                field: 'titleName',
+                headerName: '名称',
+                width: 300,
+                
+            },
+            {
+                field: 'id',
+                headerName: '描述',
+                width: 300,
+            }
+        ],
+        dataSource: [
+            {
+                titleName: "需求规格书",
+                id: "0",
+                content: "<p>需求规格书</p>",
+                children: [
+                    {
+                        titleName: "1.目录",
+                        id: "1",
+                        content: "<p>目录</p>",
+                    },
+                    {
+                        titleName: "2.项目概要",
+                        id: "2",
+                        content: "<p>项目概要</p>",
+                        children: [
+                            {
+                                titleName: "2.1.项目来源",
+                                id: "2.1",
+                                content: "<p>项目来源</p>",
+                            },
+                            {
+                                titleName: "2.2.产品定位",
+                                id: "2.2",
+                                content: "<p>产品定位</p>",
+                            },
+                            {
+                                titleName: "2.3.车辆使用场景",
+                                id: "2.3",
+                                content: "<p>车辆使用场景</p>",
+                            },
+                            {
+                                titleName: "2.4.主要信息描述",
+                                id: "2.4",
+                                content: "<p>主要信息描述</p>",
+                                children: [
+                                    {
+                                        titleName: "2.4.1.标准版技术要求",
+                                        id: "2.4.1",
+                                        content: "标准版技术要求"
+                                    }, {
+                                        titleName: "2.4.2.增强版技术要求",
+                                        id: "2.4.2",
+                                        content: "增强版技术要求"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        titleName: "3.项目环境",
+                        id: "3",
+                        content: "<p>项目环境</p>",
+                    },
+                    {
+                        titleName: "4.技术和概念设计",
+                        id: "4",
+                        content: "<p>技术和概念设计</p>",
+                    },
+                    {
+                        titleName: "5.附加要求",
+                        id: "5",
+                        content: "<p>附加要求</p>",
+                    }
+                ]
+            }
+        ]
+    }
+
+    getPosi = (level = '1') => {
+        let arr = document.querySelectorAll(`.h${level}`)
+        console.log('xx', arr)
+    }
+
+    init = async () => {
+        let {dataSource} = this.state
+        let content = ""
+        this.treeEach(dataSource, function(node, parent, i, level) {
+            node.level = level + 2
+            let title = `<h${level + 2} class='titleH${level + 2}'>${node.titleName}</h${level + 2}>`
+            content += node.content ? title + `<p>${node.content}</p>` : title
+        })
+        this.setState({content})
+    }
+
+    treeEach(data, callback, field = 'children', parent = null, level = 0) {
+        for (let i = 0; i < data.length; i++) {
+            let node = data[i];
+            if (callback.call(node, node, parent, i, level, data) === false) {
+                return false;
+            }
+            if (node[field] && node[field].length) {
+                if (this.treeEach(node[field], callback, field, node, level + 1) === false) {
+                    return false;
+                }
+            }
         }
     }
 
+    componentDidMount() {
+        this.init()
+    }
+
     render() {
+        let {content = ''} = this.state
         return(
             <div style={{width: '90%'}}>
-                
+                <Button onClick={() => this.getPosi()}>试试</Button>
                 <CKEditor
                     editor={ ClassicEditor }
-                    data="<p foo='aaa' class='foo'>Hello from CKEditor 5!</p><div class='foo'>11</div>"
+                    // data="<h2 class='h1'>h1</h2><p foo='aaa' class='foo'>Hello from CKEditor 5!</p><div class='foo'>foo</div><div class='fff'>fff</div><span class='ck-sss'>span</span>"
+                    data={content}
                     config={{
                         removePlugins: [],
+                        htmlSupport: {
+                            allow: [
+                                {
+                                    name: /^(div|p|h[1-9])$/ ,
+                                    classes: true
+                                }
+                            ]
+                        }
                     }}
                     
                     onReady={ editor => {
