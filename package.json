@@ -9,7 +9,7 @@
     "@ckeditor/ckeditor5-react": "^5.0.3",
     "@ckeditor/ckeditor5-ui": "^35.3.2",
     "antd": "^3.21.0",
-    "chart.js": "^1.1.1",
+    "chart.js": "^2.9.4",
     "ckeditor5-custom-build-leo": "^0.0.2",
     "echarts-for-react": "^2.0.15-beta.0",
     "react": "^16.8.6",
