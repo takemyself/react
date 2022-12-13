@@ -31,45 +31,54 @@ class Ckeditor extends React.Component{
             {
                 titleName: "需求规格书",
                 id: "0",
+                className: '01',
                 content: "<p>需求规格书</p>",
                 children: [
                     {
                         titleName: "1.目录",
                         id: "1",
+                        className: '011',
                         content: "<p>目录</p>",
                     },
                     {
                         titleName: "2.项目概要",
                         id: "2",
+                        className: '012',
                         content: "<p>项目概要</p>",
                         children: [
                             {
                                 titleName: "2.1.项目来源",
                                 id: "2.1",
+                                className: '0121',
                                 content: "<p>项目来源</p>",
                             },
                             {
                                 titleName: "2.2.产品定位",
                                 id: "2.2",
+                                className: '0122',
                                 content: "<p>产品定位</p>",
                             },
                             {
                                 titleName: "2.3.车辆使用场景",
                                 id: "2.3",
+                                className: '0123',
                                 content: "<p>车辆使用场景</p>",
                             },
                             {
                                 titleName: "2.4.主要信息描述",
                                 id: "2.4",
+                                className: '0124',
                                 content: "<p>主要信息描述</p>",
                                 children: [
                                     {
                                         titleName: "2.4.1.标准版技术要求",
                                         id: "2.4.1",
+                                        className: '01241',
                                         content: "标准版技术要求"
                                     }, {
                                         titleName: "2.4.2.增强版技术要求",
                                         id: "2.4.2",
+                                        className: '01242',
                                         content: "增强版技术要求"
                                     }
                                 ]
@@ -79,16 +88,19 @@ class Ckeditor extends React.Component{
                     {
                         titleName: "3.项目环境",
                         id: "3",
+                        className: '013',
                         content: "<p>项目环境</p>",
                     },
                     {
                         titleName: "4.技术和概念设计",
                         id: "4",
+                        className: '014',
                         content: "<p>技术和概念设计</p>",
                     },
                     {
                         titleName: "5.附加要求",
                         id: "5",
+                        className: '015',
                         content: "<p>附加要求</p>",
                     }
                 ]
@@ -96,9 +108,13 @@ class Ckeditor extends React.Component{
         ]
     }
 
-    getPosi = (level = '1') => {
-        let arr = document.querySelectorAll(`.h${level}`)
-        console.log('xx', arr)
+    getPosi = (level = '2') => {
+        // let arr = document.querySelectorAll(`.titleH${level}`)
+        let {dataSource} = this.state
+        this.treeEach(dataSource, function(node, parent, i, level) {
+            console.log('xx', document.querySelector(`.t${node.className}`).innerHTML)
+            console.log('xx', document.querySelector(`.p${node.className}`).innerHTML)
+        })
     }
 
     init = async () => {
@@ -106,8 +122,8 @@ class Ckeditor extends React.Component{
         let content = ""
         this.treeEach(dataSource, function(node, parent, i, level) {
             node.level = level + 2
-            let title = `<h${level + 2} class='titleH${level + 2}'>${node.titleName}</h${level + 2}>`
-            content += node.content ? title + `<p>${node.content}</p>` : title
+            let title = `<h${level + 2} class='titleH${level + 2} t${node.className}'>${node.titleName}</h${level + 2}>`
+            content += node.content ? title + `<div class='p${node.className}'>${node.content}</div>` : title
         })
         this.setState({content})
     }
